@@ -9,7 +9,7 @@ GraphicsClass::GraphicsClass()
 	m_D3D = 0;
 	m_Transform = 0;
 	//m_Sphere = 0;
-	m_Cube = 0;
+	m_Arrow = 0;
 	m_PlaneModel = 0;
 	m_LightingShader = 0;
 }
@@ -62,15 +62,15 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	}
 */
 	// Create the cube8 object.
-	m_Cube = new CubeModelClass();
-	if(!m_Cube)
+	m_Arrow = new ArrowModelClass();
+	if(!m_Arrow)
 	{
 		MessageBox(hwnd, L"Could not create the cube8 object.", L"Error", MB_OK);
 		return false;
 	}
 
 	// Initialize the cube object.
-	result = m_Cube->Initialize(m_D3D->GetDevice());
+	result = m_Arrow->Initialize(m_D3D->GetDevice());
 	if(!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the cube8 object.", L"Error", MB_OK);
@@ -145,11 +145,11 @@ void GraphicsClass::Shutdown()
 		m_Sphere = 0;
 	}
 */
-	if(m_Cube)
+	if(m_Arrow)
 	{
-		m_Cube->Shutdown();
-		delete m_Cube;
-		m_Cube = 0;
+		m_Arrow->Shutdown();
+        delete m_Arrow;
+        m_Arrow = 0;
 	}
 
 	if(m_PlaneModel)
@@ -204,14 +204,14 @@ bool GraphicsClass::Render()
 	projectionMatrix = m_Transform->GetProjectionMatrix();
 
 	// Get the world matrix of the cube8.
-	worldMatrix = m_Cube->GetModelWorldMatrix();
+    worldMatrix = m_Arrow->GetModelWorldMatrix();
 	// Render the model using the trivial shader.
-	result = m_LightingShader->Render(m_D3D->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix, m_Transform->GetCameraPosition(), m_Cube->getMaterial());
+    result = m_LightingShader->Render(m_D3D->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix, m_Transform->GetCameraPosition(), m_Arrow->getMaterial());
 	if(!result)
 	{
 		return false;
 	}
-	m_Cube->Render(m_D3D->GetDeviceContext());
+    m_Arrow->Render(m_D3D->GetDeviceContext());
 
 	// Get the world matrix of the Sphere.
 /*	worldMatrix = m_Sphere->GetModelWorldMatrix();

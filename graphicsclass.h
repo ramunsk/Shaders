@@ -10,9 +10,10 @@
 #include "d3dclass.h"
 #include "transformationclass.h"
 #include "sphere_modelclass.h"
-#include "cube_modelclass.h"
+#include "ArrowModelClass.h"
 #include "plane_modelclass.h"
 #include "lighting_shaderclass.h"
+
 
 /////////////
 // GLOBALS //
@@ -42,7 +43,7 @@ private:
 	D3DClass* m_D3D;
 	TransformationClass* m_Transform;
 	SphereModelClass* m_Sphere;
-	CubeModelClass* m_Cube;
+	ArrowModelClass* m_Arrow;
 	PlaneModelClass* m_PlaneModel;
 	LightingShaderClass* m_LightingShader;
 };

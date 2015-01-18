@@ -14,7 +14,7 @@
 #include "indexmodelclass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-// Class name: CubeModelClass
+// Class name: ArrowModelClass
 ////////////////////////////////////////////////////////////////////////////////
 class ArrowModelClass : public IndexModelClass
 {
@@ -31,11 +31,10 @@ private:
     bool InitializeBuffers(ID3D11Device*);
     void RenderBuffers(ID3D11DeviceContext*);
 
-    D3DXMATRIX _staticRotation;
-    D3DXMATRIX _staticScale;
-
 private:
     MaterialBufferType m_Material;
+    D3DXMATRIX _staticRotation;
+    D3DXMATRIX _staticScale;
 
 };
 

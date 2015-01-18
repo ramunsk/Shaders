@@ -125,7 +125,7 @@ bool D3DClass::Initialize(HWND hwnd, bool fullscreen)
 				wcscat_s(wbuffer, 128, L"\nOnly feature level of Direct3D 9 is supported\0");
 			}
 
-			MessageBox(hwnd, wbuffer, L"D3DClass::Initialize", MB_OK);
+			//MessageBox(hwnd, wbuffer, L"D3DClass::Initialize", MB_OK);
             break;
         }
 	/*

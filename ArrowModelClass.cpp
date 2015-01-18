@@ -16,6 +16,11 @@ ArrowModelClass::~ArrowModelClass()
 {
 }
 
+MaterialBufferType ArrowModelClass::getMaterial()
+{
+    return m_Material;
+}
+
 bool ArrowModelClass::InitializeBuffers(ID3D11Device* device)
 {
     HRESULT result;
@@ -23,15 +28,15 @@ bool ArrowModelClass::InitializeBuffers(ID3D11Device* device)
 
     std::vector<VertexNorm> vertices = {
         // Antgalis
-        { -378.0f, 378.0f,   0.0f },    // 0
-        { -343.0f, 343.0f, -15.0f },	// 1
-        { -342.0f, 344.0f,  -2.0f },	// 2
-        { -332.0f, 354.0f,  -0.0f },	// 3
-        { -341.0f, 344.0f,   2.0f },	// 4
-        { -343.0f, 343.0f,  15.0f },	// 5
-        { -344.0f, 342.0f,   2.0f },	// 6
-        { -354.0f, 332.0f,   0.0f },	// 7
-        { -344.0f, 341.0f,  -2.0f,},	// 8
+        { -378.0f, 378.0f,   0.0f }, // 0
+        { -343.0f, 343.0f, -15.0f }, // 1
+        { -342.0f, 344.0f,  -2.0f }, // 2
+        { -332.0f, 354.0f,  -0.0f }, // 3
+        { -341.0f, 344.0f,   2.0f }, // 4
+        { -343.0f, 343.0f,  15.0f }, // 5
+        { -344.0f, 342.0f,   2.0f }, // 6
+        { -354.0f, 332.0f,   0.0f }, // 7
+        { -344.0f, 341.0f,  -2.0f,}, // 8
         // Laikiklis
         { -343.0f, 343.0f, -6.0f }, // 9
         { -329.0f, 329.0f, -6.0f },	// 10
