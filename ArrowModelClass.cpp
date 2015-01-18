@@ -6,9 +6,13 @@
 ArrowModelClass::ArrowModelClass() :IndexModelClass()
 {
 
-    float scaleFactor = 0.01f;
+    float scaleFactor = 0.001f;
     D3DXMatrixRotationZ(&_staticRotation, D3DXToRadian(-45.0f));
     D3DXMatrixScaling(&_staticScale, scaleFactor, scaleFactor, scaleFactor);
+
+    m_Material.ambientColor = D3DXVECTOR4(0.125f, 0.05f, 0.3f, 1.0f);
+    m_Material.diffuseColor = D3DXVECTOR4(0.0f, 0.0f, 1.0f, 1.0f);
+    m_Material.specularColor = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 25.0f);
 
 }
 
@@ -143,6 +147,12 @@ bool ArrowModelClass::InitializeBuffers(ID3D11Device* device)
 
     int vertexCount = vertices.size();
     SetVertexCount(vertexCount);
+
+    for (int i = 0; i < vertexCount; i++)
+    {
+        VertexNorm vertex = vertices[i];
+        D3DXVec3Normalize(&vertex.position, &vertex.normal);
+    }
 
     D3D11_BUFFER_DESC vertexBufferDesc;
     vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
