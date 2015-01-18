@@ -6,7 +6,7 @@
 ArrowModelClass::ArrowModelClass() :IndexModelClass()
 {
 
-    float scaleFactor = 0.001f;
+    float scaleFactor = 0.01f;
     D3DXMatrixRotationZ(&_staticRotation, D3DXToRadian(-45.0f));
     D3DXMatrixScaling(&_staticScale, scaleFactor, scaleFactor, scaleFactor);
 
@@ -148,11 +148,11 @@ bool ArrowModelClass::InitializeBuffers(ID3D11Device* device)
     int vertexCount = vertices.size();
     SetVertexCount(vertexCount);
 
-    for (int i = 0; i < vertexCount; i++)
+    /*for (int i = 0; i < vertexCount; i++)
     {
         VertexNorm vertex = vertices[i];
-        D3DXVec3Normalize(&vertex.position, &vertex.normal);
-    }
+        D3DXVec3Normalize(&vertex.normal, &vertex.position);
+    }*/
 
     D3D11_BUFFER_DESC vertexBufferDesc;
     vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
@@ -358,7 +358,7 @@ void ArrowModelClass::RenderBuffers(ID3D11DeviceContext* deviceContext)
     unsigned int offset;
 
     // Set vertex buffer stride and offset.
-    stride = sizeof(VertexType);
+    stride = sizeof(VertexNorm);
     offset = 0;
 
     // Set the vertex buffer to active in the input assembler so it can be rendered.
@@ -386,7 +386,7 @@ void ArrowModelClass::Render(ID3D11DeviceContext* deviceContext)
     D3DXMatrixRotationY(&rotMatrixY, fAngle);
     D3DXMatrixScaling(&scaleMatrix, 0.75f, 0.75f, 0.75f);
     D3DXMatrixTranslation(&transMatrix, 0.0f, 4.0f, 0.0f);
-    SetModelWorldMatrix(_staticRotation * rotMatrixX *rotMatrixY * scaleMatrix * transMatrix);
+    SetModelWorldMatrix(_staticRotation * rotMatrixX * rotMatrixY * _staticScale * scaleMatrix * transMatrix);
 
     // Put the vertex and index buffers on the graphics pipeline to prepare them for drawing.
     RenderBuffers(deviceContext);
