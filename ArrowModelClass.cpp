@@ -2,18 +2,6 @@
 #include <vector>
 #include <ctime>
 
-#define CYCLE_LENGTH 2000.0f
-
-#define SCALE_MIN 1.0f
-#define SCALE_MAX 3.0f
-
-#define Y_MIN -4.0f
-#define Y_MAX  4.0f
-#define Z_MIN -2.0f
-#define Z_MAX  2.0f
-
-#define R_MIN -90.0f
-#define R_MAX 180.0f
 
 ArrowModelClass::ArrowModelClass() :IndexModelClass()
 {
@@ -31,17 +19,6 @@ ArrowModelClass::~ArrowModelClass()
 bool ArrowModelClass::InitializeBuffers(ID3D11Device* device)
 {
     HRESULT result;
-
-    ///
-    /// VERTICES
-    ///
-    D3DXVECTOR4 COLOR_WHITE = { 1.00f, 1.00f, 1.00f, 1.0f };
-    D3DXVECTOR4 COLOR_LIGHT_GRAY = { 0.60f, 0.60f, 0.60f, 1.0f };
-    D3DXVECTOR4 COLOR_BLUE = { 0.15f, 0.02f, 0.94f, 1.0f };
-    D3DXVECTOR4 COLOR_LIGHT_BROWN = { 0.71f, 0.31f, 0.04f, 1.0f };
-    D3DXVECTOR4 COLOR_DARK_BROWN = { 0.68f, 0.30f, 0.01f, 1.0f };
-    D3DXVECTOR4 COLOR_RED = { 0.4f, 0.0f, 0.00f, 1.0f };
-    D3DXVECTOR4 COLOR_ORANGE = { 1.0f, 0.4f, 0.00f, 1.0f };
 
 
     std::vector<VertexNorm> vertices = {
