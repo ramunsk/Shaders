@@ -20,11 +20,6 @@ ArrowModelClass::~ArrowModelClass()
 {
 }
 
-MaterialBufferType ArrowModelClass::getMaterial()
-{
-    return m_Material;
-}
-
 bool ArrowModelClass::InitializeBuffers(ID3D11Device* device)
 {
     HRESULT result;

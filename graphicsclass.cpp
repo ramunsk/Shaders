@@ -2,6 +2,8 @@
 // Filename: graphicsclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
 #include "graphicsclass.h"
+#include "cube_modelclass.h"
+#include "ArrowModelClass.h"
 
 
 GraphicsClass::GraphicsClass()
@@ -9,7 +11,7 @@ GraphicsClass::GraphicsClass()
 	m_D3D = 0;
 	m_Transform = 0;
 	//m_Sphere = 0;
-	m_Arrow = 0;
+	m_Model = 0;
 	m_PlaneModel = 0;
 	m_LightingShader = 0;
 }
@@ -62,15 +64,15 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	}
 */
 	// Create the cube8 object.
-	m_Arrow = new ArrowModelClass();
-	if(!m_Arrow)
+	m_Model = new ArrowModelClass();
+	if(!m_Model)
 	{
 		MessageBox(hwnd, L"Could not create the cube8 object.", L"Error", MB_OK);
 		return false;
 	}
 
 	// Initialize the cube object.
-	result = m_Arrow->Initialize(m_D3D->GetDevice());
+	result = m_Model->Initialize(m_D3D->GetDevice());
 	if(!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the cube8 object.", L"Error", MB_OK);
@@ -145,11 +147,11 @@ void GraphicsClass::Shutdown()
 		m_Sphere = 0;
 	}
 */
-	if(m_Arrow)
+	if(m_Model)
 	{
-		m_Arrow->Shutdown();
-        delete m_Arrow;
-        m_Arrow = 0;
+		m_Model->Shutdown();
+        delete m_Model;
+        m_Model = 0;
 	}
 
 	if(m_PlaneModel)
@@ -204,14 +206,14 @@ bool GraphicsClass::Render()
 	projectionMatrix = m_Transform->GetProjectionMatrix();
 
 	// Get the world matrix of the cube8.
-    worldMatrix = m_Arrow->GetModelWorldMatrix();
+    worldMatrix = m_Model->GetModelWorldMatrix();
 	// Render the model using the trivial shader.
-    result = m_LightingShader->Render(m_D3D->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix, m_Transform->GetCameraPosition(), m_Arrow->getMaterial());
+    result = m_LightingShader->Render(m_D3D->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix, m_Transform->GetCameraPosition(), m_Model->getMaterial());
 	if(!result)
 	{
 		return false;
 	}
-    m_Arrow->Render(m_D3D->GetDeviceContext());
+    m_Model->Render(m_D3D->GetDeviceContext());
 
 	// Get the world matrix of the Sphere.
 /*	worldMatrix = m_Sphere->GetModelWorldMatrix();

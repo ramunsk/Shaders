@@ -12,7 +12,11 @@ IndexModelClass::IndexModelClass()
 	m_indexBuffer = 0;
 
 	// Initialize the world matrix to the identity matrix.
-       D3DXMatrixIdentity(&m_modelWorldMatrix);
+    D3DXMatrixIdentity(&m_modelWorldMatrix);
+
+    m_Material.ambientColor = D3DXVECTOR4(0.125f, 0.05f, 0.3f, 1.0f);
+    m_Material.diffuseColor = D3DXVECTOR4(0.0f, 0.0f, 1.0f, 1.0f);
+    m_Material.specularColor = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 25.0f);
 }
 
 
@@ -23,6 +27,11 @@ IndexModelClass::IndexModelClass(const IndexModelClass& other)
 
 IndexModelClass::~IndexModelClass()
 {
+}
+
+MaterialBufferType IndexModelClass::getMaterial()
+{
+    return m_Material;
 }
 
 

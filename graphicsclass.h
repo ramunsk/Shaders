@@ -43,7 +43,7 @@ private:
 	D3DClass* m_D3D;
 	TransformationClass* m_Transform;
 	SphereModelClass* m_Sphere;
-	ArrowModelClass* m_Arrow;
+	IndexModelClass* m_Model;
 	PlaneModelClass* m_PlaneModel;
 	LightingShaderClass* m_LightingShader;
 };

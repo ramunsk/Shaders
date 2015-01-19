@@ -25,14 +25,12 @@ public:
     ~ArrowModelClass();
 
     void Render(ID3D11DeviceContext*);
-    MaterialBufferType getMaterial();
 
 private:
     bool InitializeBuffers(ID3D11Device*);
     void RenderBuffers(ID3D11DeviceContext*);
 
 private:
-    MaterialBufferType m_Material;
     D3DXMATRIX _staticRotation;
     D3DXMATRIX _staticScale;
 

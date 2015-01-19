@@ -33,6 +33,7 @@ public:
 	int GetIndexCount();
 	int GetVertexCount(); 
 	D3DXMATRIX GetModelWorldMatrix();
+    MaterialBufferType getMaterial();
 
 protected:
 	void SetIndexCount(int);
@@ -46,10 +47,12 @@ private:
 
 protected:
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
+    MaterialBufferType m_Material;
 
 private:
 	int m_vertexCount, m_indexCount;	
 	D3DXMATRIX m_modelWorldMatrix;
+    
 };
 
 #endif

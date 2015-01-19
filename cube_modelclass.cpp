@@ -22,10 +22,6 @@ CubeModelClass::~CubeModelClass()
 {
 }
 
-MaterialBufferType CubeModelClass::getMaterial()
-{
-	return m_Material;
-}
 
 bool CubeModelClass::InitializeBuffers(ID3D11Device* device)
 {
