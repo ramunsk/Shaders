@@ -143,11 +143,11 @@ bool ArrowModelClass::InitializeBuffers(ID3D11Device* device)
     int vertexCount = vertices.size();
     SetVertexCount(vertexCount);
 
-    /*for (int i = 0; i < vertexCount; i++)
+    for (int i = 0; i < vertexCount; i++)
     {
         VertexNorm vertex = vertices[i];
         D3DXVec3Normalize(&vertex.normal, &vertex.position);
-    }*/
+    }
 
     D3D11_BUFFER_DESC vertexBufferDesc;
     vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
